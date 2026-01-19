@@ -1,0 +1,350 @@
+{
+    "info": {
+        "name": "TaskFlow API",
+        "description": "Full-stack task management API with JWT authentication",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "Authentication",
+            "item": [
+                {
+                    "name": "Register User",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"name\": \"John Doe\",\n  \"email\": \"john@example.com\",\n  \"password\": \"password123\"\n}"
+                        },
+                        "url": {
+                            "raw": "http://localhost:5000/api/auth/register",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "5000",
+                            "path": [
+                                "api",
+                                "auth",
+                                "register"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Login User",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"email\": \"john@example.com\",\n  \"password\": \"password123\"\n}"
+                        },
+                        "url": {
+                            "raw": "http://localhost:5000/api/auth/login",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "5000",
+                            "path": [
+                                "api",
+                                "auth",
+                                "login"
+                            ]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Profile",
+            "item": [
+                {
+                    "name": "Get Profile",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}",
+                                "type": "text"
+                            }
+                        ],
+                        "url": {
+                            "raw": "http://localhost:5000/api/profile",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "5000",
+                            "path": [
+                                "api",
+                                "profile"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Update Profile",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}",
+                                "type": "text"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"name\": \"John Updated\",\n  \"email\": \"john.new@example.com\"\n}"
+                        },
+                        "url": {
+                            "raw": "http://localhost:5000/api/profile",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "5000",
+                            "path": [
+                                "api",
+                                "profile"
+                            ]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Tasks",
+            "item": [
+                {
+                    "name": "Create Task",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}",
+                                "type": "text"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"title\": \"Complete project documentation\",\n  \"description\": \"Write comprehensive README and API docs\",\n  \"status\": \"todo\"\n}"
+                        },
+                        "url": {
+                            "raw": "http://localhost:5000/api/tasks",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "5000",
+                            "path": [
+                                "api",
+                                "tasks"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get All Tasks",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}",
+                                "type": "text"
+                            }
+                        ],
+                        "url": {
+                            "raw": "http://localhost:5000/api/tasks?status=todo&search=project",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "5000",
+                            "path": [
+                                "api",
+                                "tasks"
+                            ],
+                            "query": [
+                                {
+                                    "key": "status",
+                                    "value": "todo",
+                                    "description": "Filter by status (optional)"
+                                },
+                                {
+                                    "key": "search",
+                                    "value": "project",
+                                    "description": "Search in title/description (optional)"
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get Single Task",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}",
+                                "type": "text"
+                            }
+                        ],
+                        "url": {
+                            "raw": "http://localhost:5000/api/tasks/:id",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "5000",
+                            "path": [
+                                "api",
+                                "tasks",
+                                ":id"
+                            ],
+                            "variable": [
+                                {
+                                    "key": "id",
+                                    "value": "task_id_here"
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Update Task",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}",
+                                "type": "text"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"title\": \"Updated task title\",\n  \"description\": \"Updated description\",\n  \"status\": \"in-progress\"\n}"
+                        },
+                        "url": {
+                            "raw": "http://localhost:5000/api/tasks/:id",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "5000",
+                            "path": [
+                                "api",
+                                "tasks",
+                                ":id"
+                            ],
+                            "variable": [
+                                {
+                                    "key": "id",
+                                    "value": "task_id_here"
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Delete Task",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}",
+                                "type": "text"
+                            }
+                        ],
+                        "url": {
+                            "raw": "http://localhost:5000/api/tasks/:id",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "5000",
+                            "path": [
+                                "api",
+                                "tasks",
+                                ":id"
+                            ],
+                            "variable": [
+                                {
+                                    "key": "id",
+                                    "value": "task_id_here"
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Health Check",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "http://localhost:5000/api/health",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "5000",
+                    "path": [
+                        "api",
+                        "health"
+                    ]
+                }
+            },
+            "response": []
+        }
+    ],
+    "variable": [
+        {
+            "key": "token",
+            "value": "your_jwt_token_here",
+            "type": "string"
+        }
+    ]
+}
